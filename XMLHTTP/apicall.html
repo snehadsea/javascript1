@@ -1,0 +1,158 @@
+<!-- interview questions
+1.api
+2.json in javascritpt
+3.events
+4.dom
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apicall</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        #container {
+            margin: auto;
+            width: 50%;
+            /* border: 3px solid green; */
+            padding: 10px;
+            display:flex;
+            justify-content: center;
+        }
+
+        #card {
+            height: 300px;
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            border-radius: 30px;
+            background-color: white;
+        }
+
+        .card-body-img {
+            width:100px;
+            height:100px;
+            margin:0 100px;
+        }
+
+        .card-body-title {
+            color: rgb(26, 18, 18);
+            font-size:1.6rem;
+            font-weight: 400;
+            margin: 0 110px;
+            margin-bottom: 10px;
+          
+        }
+
+        .card-body-text{
+            color:grey;
+            font-size: 20px;
+            margin-top:0;
+            margin-bottom:2rem;
+            text-align: center;
+        }
+
+        .hr1{
+            width: 280px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .card-footer-social {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            margin-top: 0px;
+            text-align: center;
+            /* padding:10px; */
+        }
+        
+        .card-footer-social p{
+            letter-spacing: 1px;
+            margin-top:-10px;
+            
+        }
+
+        #card:hover{
+            transform :scale(0.9, 0.9);
+            box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
+            -5px -5px 30px 15px rgba(0,0,0,0.22);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+    </div>
+    <script>
+        //   https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+        const container = document.querySelector('#container');
+        //creating an api
+        const request = new XMLHttpRequest();
+        request.open('GET', 'https://restcountries.eu/rest/v2/name/nepal');
+        request.send();
+
+        //   to get the reponse
+        request.addEventListener('load', function () {
+            console.log(this.responseText);
+            //converting into json object
+            const [data] = JSON.parse(this.responseText);
+            //  console.log(data);
+
+            //i want capital kathmandu
+            console.log(data.capital);
+
+            const htmlData = `
+        <div id="card">
+          <article class="card">
+              <div class="card-body">
+                  <img src="${data.flag}" alt="" class="card-body-img"/>
+                  <h1 class="card-body-title">
+                      ${data.name}
+                  </h1>
+                  <p class="card-body-text"> capital : ${data.capital}
+                  </p>
+              </div>
+              <hr class="hr1">
+              <div class="card-footer">
+                  <div class="card-footer-social">
+                      <h3>${data.nativeName}</h3>
+                      <p>Native Language</p>
+                  </div>
+                <div class="card-footer-social">
+                    <h3>${data.population}</h3>
+                    <p>population</p>
+                </div>
+                <div class="card-footer-social">
+                    <h3>${data.demonym}</h3>
+                    <p>Demonym</p>
+                </div>
+
+              </div>
+
+          </article>
+      </div>
+      ` ;
+            container.insertAdjacentHTML("afterbegin", htmlData);
+        })
+
+
+    </script>
+</body>
+
+</html>

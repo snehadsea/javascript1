@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+  background-color:rgb(246,246,246);
+  font-family: "Redressed", curive;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align:center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 20px;
+}
+
+.main-heading h1{
+    margin-bottom: 20px;
+    color:darkgoldenrod;
+}
+.img2{
+    height:200px;
+    width:200px;
+}
+
+ 
+ .btn1{
+    display: inline-block;
+    background: darkgoldenrod;
+    color: white;
+    font-size:15px;
+    font-weight: bold;
+    text-align: center;
+    transition: 400px;
+    padding: 10px;
+    border:none;
+    outline:none;
+    cursor: pointer;
+ }
+
+ .btn2{
+    display: inline-block;
+    background: darkgoldenrod;
+    color: white;
+    font-size:15px;
+    font-weight: bold;
+    text-align: center;
+    transition: 400px;
+    padding: 10px;
+    border:none;
+    outline:none;
+    cursor: pointer;
+ }
+
+ 
